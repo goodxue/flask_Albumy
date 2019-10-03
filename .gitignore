@@ -1,0 +1,5 @@
+.vscode/
+settings.py
+*/__pycache__
+Albumy/*/__pycache__
+Pipfile
