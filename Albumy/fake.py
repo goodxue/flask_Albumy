@@ -1,7 +1,7 @@
 from faker import Faker
 
-from albumy.extensions import db
-from albumy.models import User
+from Albumy.extensions import db
+from Albumy.models import User
 
 fake = Faker()
 

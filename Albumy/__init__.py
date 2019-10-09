@@ -26,7 +26,14 @@ def create_app(config_name=None):
     register_extensions(app)
     register_commands(app)  #注册命令行工具
 
+    #db.create_all(app=app)
+
     return app
+
+def register_blueprints(app):
+    from blueprints.auth import auth_bp
+    app.register_blueprint(auth_bp, url_prefix='/auth')    
+
 
 def register_extensions(app):
     db.init_app(app)
@@ -50,8 +57,8 @@ def register_commands(app):
         click.echo('Initializing the database...')
         db.create_all()
 
-        click.echo('Initializing the roles and permissions...')
-        Role.init_role()
+        # click.echo('Initializing the roles and permissions...')
+        # Role.init_role()
 
         click.echo('Done.')
     @app.cli.command()
@@ -65,5 +72,5 @@ def register_commands(app):
         db.create_all()
 
         click.echo('Generating %d users...' % user)
-        fake_admin()
+        fake_user()
         click.echo('Done.')
